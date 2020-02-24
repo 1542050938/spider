@@ -1,0 +1,47 @@
+<!--js、ajax提交form表单-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<script>
+
+
+
+<!--   定义checkForm()方法，并在下面让<input type="button" onclick="checkForm();" value="登录">监听事件-->
+<!--     function checkForm() {-->
+<!--         $("#myform").submit()-->
+<!--     }-->
+<!--jquery加载完成后，调用监听事件-->
+$(document).ready(function() {
+          <!--方式一:监听click事件-->
+<!--     $("#myform").click(function () {-->
+<!--         $("#myform").submit()-->
+<!--     })-->
+<!--     方式二:-调用ajax方法来提交->
+    $.ajax({
+        type:"post",
+        url:"http://127.0.0.1:8000",
+        data: $("#myform").serialize(),
+        success:function (data) {
+            console.log(data)
+        }
+    })
+})
+</script>
+
+
+<body>
+<!--提交到服务器所在的的域名-->
+<form id="myform" action="http://127.0.0.1:8000" method="POST" enctype="multipart/form-data">
+    <e class="address">&#xe0b1;</e>
+    <input type="text" name="name"/>
+    <input type="password" name="password">
+    <input type="file" name="file">
+    <input type="button" value="登录">
+</form>
+
+</body>
+</html>
